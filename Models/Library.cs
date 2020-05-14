@@ -10,11 +10,14 @@ namespace Library.Models
     public string Name { get; set; }
     private List<Book> Books { get; set; }
 
+    private List<Book> CheckedOut { get; set; }
+
     public xLibrary(string location, string name)
     {
       Location = location;
       Name = name;
       Books = new List<Book>();
+      CheckedOut = new List<Book>();
     }
     public void PrintBooks()
     {
@@ -26,6 +29,31 @@ namespace Library.Models
     public void AddBook(Book book)
     {
       Books.Add(book);
+    }
+    public void Checkout(String index)
+    {
+      Book selectedBook = ValidateBook(index, Books);
+      if (selectedBook == null)
+      {
+        Console.Clear();
+        System.Console.WriteLine(@"Invalid Selection
+                ");
+        return;
+      }
+      selectedBook.Available = false;
+      CheckedOut.Add(selectedBook);
+      Books.Remove(selectedBook);
+      Console.WriteLine($"You have checked out {selectedBook.Title}");
+    }
+    private Book ValidateBook(String selection, List<Book> bookList)
+    {
+      int bookIndex = 0;
+      bool valid = Int32.TryParse(selection, out bookIndex);
+      if (!valid || bookIndex < 1 || bookIndex > bookList.Count)
+      {
+        return null;
+      }
+      return bookList[bookIndex - 1];
     }
 
   }

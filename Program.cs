@@ -28,6 +28,9 @@ namespace library
             myLibrary.PrintBooks();
             Console.WriteLine("");
             Console.WriteLine("Select a book number to checkout (Q)uit, or (R)eturn a book");
+
+            string selection = Console.ReadLine();
+            myLibrary.Checkout(selection);
         
         }
     }
