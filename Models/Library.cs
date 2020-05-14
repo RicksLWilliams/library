@@ -21,10 +21,17 @@ namespace Library.Models
     }
     public void PrintBooks()
     {
+      //Console.Clear();
+      //Console.WriteLine($"Welcome to The {myLibrary.Name} Library at {myLibrary.Location}!");
+      Console.WriteLine("");
+      Console.WriteLine("Available Books:");
+      //myLibrary.PrintBooks();
       for (int i = 0; i < Books.Count; i++)
       {
         Console.WriteLine($"{i + 1} {Books[i].Title} - {Books[i].Author}");
       }
+      Console.WriteLine("");
+      Console.WriteLine("Select a book number to checkout (Q)uit, or (R)eturn a book");
     }
     public void AddBook(Book book)
     {
