@@ -31,6 +31,9 @@ namespace library
         if (selection.ToLower() == "q")
         {
           inLibrary = false;
+        } else if (selection.ToLower() == "r")
+        {
+          Console.WriteLine($"I need return code here ...");  
         }
         else
         {
